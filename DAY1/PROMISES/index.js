@@ -1,11 +1,17 @@
-const mypromise=new Promise((resolve, reject) =>{
-    let marks=78;
+import {
+  appendFileSync,
+  readFileSync,
+  writeFileSync,
+} from "./readAndWriteFile.js";
 
-    if(marks > 33){
-        resolve("pass");
-    }
-    else {
-    reject("fail");
-    }
-})
-mypromise.then((msg) => console.log(msg)).catch((error)=> console.log("some error occured", error));
+console.log("before read");
+readFileSync("./example.txt");
+console.log("after read");
+
+console.log("before write");
+writeFileSync("./example.txt", "added data");
+console.log("after write");
+
+console.log("before append");
+appendFileSync("./example.txt", "appended data");
+console.log("after append");
